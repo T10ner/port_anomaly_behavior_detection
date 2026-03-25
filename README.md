@@ -108,112 +108,84 @@ port_anomaly_demo/
 │     └─ make_first_match_candidates.py
 │
 └─ README.md
----
 ```
 
-四、各模块说明
-src/
+---
 
+## 四、各模块说明
+
+### `src/`
 AIS 主线异常检测代码，主要负责：
 
-AIS 数据清洗与轨迹切分
-行为统计特征提取
-异常规则检测
-结果可视化
-config/
+- AIS 数据清洗与轨迹切分
+- 行为统计特征提取
+- 异常规则检测
+- 结果可视化
 
+### `config/`
 配置文件目录，目前主要包含阈值设置。
 
-fvessel_fusion/scripts/
-
+### `fvessel_fusion/scripts/`
 视频-AIS 融合实验脚本目录，主要负责：
 
-FVessel 数据读取
-AIS 合并与时间对齐
-视频抽帧与可视化
-YOLO 检测
-多目标跟踪
-视觉轨迹构建
-视频轨迹与 AIS 的候选匹配
-五、运行环境
+- FVessel 数据读取
+- AIS 合并与时间对齐
+- 视频抽帧与可视化
+- YOLO 检测
+- 多目标跟踪
+- 视觉轨迹构建
+- 视频轨迹与 AIS 的候选匹配
+
+---
+
+## 五、运行环境
 
 推荐环境：
 
-Python 3.10
-Windows 10/11
-NVIDIA GPU（建议 CUDA 可用）
-PyTorch + CUDA
-Ultralytics YOLO
+- Python 3.10
+- Windows 10/11
+- NVIDIA GPU（建议 CUDA 可用）
+- PyTorch + CUDA
+- Ultralytics YOLO
 
-当前实验环境示例：
 
-NVIDIA GeForce RTX 5080
-Intel Core i7-13700K
-64GB RAM
-六、依赖库
+---
+
+## 六、依赖库
 
 常用依赖包括：
 
-pandas
-numpy
-matplotlib
-opencv-python
-ultralytics
-torch
-torchvision
+- pandas
+- numpy
+- matplotlib
+- opencv-python
+- ultralytics
+- torch
+- torchvision
 
 如需手动安装，可参考：
 
+```bash
 pip install pandas numpy matplotlib opencv-python ultralytics
+```
 
 如需使用 GPU，请安装带 CUDA 的 PyTorch 版本。
 
-七、数据说明
-1. AIS 主线实验数据
+---
 
+## 七、数据说明
+
+### 1. AIS 主线实验数据
 当前 AIS baseline 使用港区 AIS 子集开展实验，数据经过区域裁剪与预处理后用于轨迹异常候选识别。
 
-2. FVessel 数据
-
+### 2. FVessel 数据
 FVessel 数据集主要用于视频-AIS 关联匹配与融合验证。
 
-注意
-
-由于数据体积、来源限制及仓库管理考虑，本仓库不直接提供原始 AIS 数据、FVessel 视频数据及中间输出结果。
+### 注意
+由于数据体积、来源限制及仓库管理考虑，本仓库**不直接提供原始 AIS 数据、FVessel 视频数据及中间输出结果**。  
 使用者需要自行准备数据，并放置到本地对应目录后再运行脚本。
 
-八、当前阶段结论
+---
 
-目前项目已完成：
 
-基于 AIS 的异常行为识别 baseline 搭建
-基于视频的船舶检测与多目标跟踪实验
-视频-AIS 第一版候选匹配链路
 
-从当前实验结果看：
-
-主航道异常转向候选事件识别效果较稳定；
-主航道低速停留候选事件已有一定识别能力，但仍需进一步区分正常等待与异常停车；
-低速位置异常候选事件仍受位置抖动影响，需要进一步精化；
-视频-AIS 融合链路已初步跑通，说明后续继续开展多源关联匹配与融合实验具有可行性。
-九、下一步计划
-
-下一阶段拟继续推进以下工作：
-
-细化低速停留事件的前后运动状态约束；
-继续完善港区空间区域划分；
-对视频 tracking 结果进行碎轨迹合并；
-优化视频轨迹与 AIS 轨迹的匹配规则；
-引入更合理的几何映射与位置约束；
-在 AIS 主线稳定的基础上，进一步扩展视频-AIS 融合实验。
-十、当前技术路线
-
-现阶段最合适的路线是：
-
-以 AIS 轨迹异常候选识别为主线，先完成可解释的规则法 baseline；
-再逐步引入视频数据与 FVessel 数据集，补充多源匹配与融合实验。
-
-也就是说，当前的核心思路是：
-
-先把 AIS 侧异常候选检测做稳、做清楚、做可解释；
-再把视频-AIS 关联匹配做成可信的验证与增强模块。
