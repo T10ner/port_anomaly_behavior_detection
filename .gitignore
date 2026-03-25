@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Outputs
+outputs/
+fvessel_fusion/data/
+fvessel_fusion/**/processed/
+fvessel_fusion/**/yolo_runs/
+fvessel_fusion/**/track_runs/
+fvessel_fusion/**/fusion_vis/
+fvessel_fusion/**/frames/
+fvessel_fusion/**/figures/
+
+# Large files
+*.mp4
+*.avi
+*.mov
+*.pt
+*.pth
+*.onnx
+
+# Logs
+*.log
+.idea/
+data/
+fvessel_fusion/data/

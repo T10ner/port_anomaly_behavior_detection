@@ -1,0 +1,20 @@
+time_gap_minutes: 30
+
+speed:
+  stop_knots: 0.5
+  abnormal_acc_knots_per_min: 1.0
+
+turn:
+  sharp_turn_deg: 45
+  uturn_deg: 90
+  window_minutes: 3
+
+deviation:
+  max_distance_from_centerline_m: 150
+
+anchorage:
+  drift_radius_m: 100
+  min_drift_duration_minutes: 15
+
+event:
+  min_stop_duration_minutes: 10
